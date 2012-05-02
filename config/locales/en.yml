@@ -1,0 +1,161 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  Blacklisted: not allowed
+  Whitelisted: Whitelisted
+  Unauthorized: Unauthorized
+  PendingPayer: Pending Approval
+  Too Low: Too Low
+  Always Approved: Always Approved
+  Too High: Too High
+  category: Category
+  retailer: Merchant
+  title: Title
+  esrb_rating: ESRB Rating
+  pegi_rating: PEGI Rating
+  Merchant Type: Merchant Type
+  Product Type: Product Typeo
+  Online Games: Online Games
+  Virtual Goods: Virtual Goods
+  approval_rule_heading: Have Paykido enforce your rules for %{consumer}
+  approval_rule_instructions1: Drag to the right to automatically approve it 
+  approval_rule_instructions2: Drag to the left to automatically decline it 
+  signedup only: Available for signed up users only
+  Rule Title: Always %{action} %{property}
+  Next Grant: Next Grant
+  Balance: Balance
+  Allowance: Allowance
+  Consumer amount rules: User Rules - Amounts
+  currency_code: USD
+  allowance: allowance
+  current_balance: Current balance
+  Consumers: Consumers
+  Retailers: Merchants
+  Products: Titles
+  Categories: Categories
+  Purchase: Purchase
+  Purchases: Purchases
+  Settings: Settings
+  Date: Date
+  Time: Time
+  Consumer: User
+  Retailer: Merchant
+  Product: Title
+  Category: Category
+  Amount: Price
+  Authorized: Authorized
+  By: By
+  Reason: Reason
+  Status: Status
+  Pending: Pending
+  PendingPayer: Pending approval
+  Unauthorized: Unauthorized
+  Unauthorized retailer: Unauthorized Merchant
+  Unauthorized Category: Unauthorized Category
+  Unauthorized Product: Unauthorized Title
+  Inappropriate Content: Inappropriate Content
+  Insufficient: Insufficient 
+  Insufficient Balance: Insufficient Balance
+  Just show everything: Just show everything
+  Zero: Zero
+  Zero Balance: Zero Balance
+  Under: Under
+  Under Threshold: Under Threshold
+  Over: Over
+  Over Threshold: Over Threshold
+  ManuallyAuthorized: Manually Authorized
+  Action: Action
+  Approve: Approve
+  Buy: Buy
+  Decline: Decline
+  Share: Share
+  activerecord:
+    models:
+    attributes:
+      consumer:
+        allowance_period: [["Weekly" , "Weekly"], ["Monthly" , "Monthly"]]
+        allowance_day_of_week: [["Mon", 0], ["Tue", 1], ["Wed", 2], ["Thu", 3], ["Fri", 4], ["Sat", 5], ["Sun", 6]]
+        next_allowance_date: "%m/%d/%Y"
+  number:
+    format:
+      separator: ","
+      delimiter: " "
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+    currency:
+      format:
+        format: "%n %u"
+        unit: "€"
+        separator: ","
+        delimiter: " "
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+  time:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d %b"
+      long: "%d %B, %Y"
+      weekday: "%a, %d %b"
+      slash: "%m/%d/%Y"
+
+    day_names:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+    abbr_day_names:
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+
+    month_names:
+      - ~
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+    abbr_month_names:
+      - ~
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+    order:
+      - :day
+      - :month
+      - :year
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d %b"
+      long: "%d %B, %Y"
+      weekday: "%a, %d %b"
+      slash: "%m/%d/%Y"
+
+

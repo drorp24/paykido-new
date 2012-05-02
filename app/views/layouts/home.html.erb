@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Paykido - the new way to pay </title>
+
+<link   rel="stylesheet" href="/landing/css/layout.css" type="text/css" />
+
+<script type="text/javascript" src="/landing/js/jquery.js" charset="utf-8"></script><!-- jQuery -->
+<!-- <script type="text/javascript" src="/landing/js/scrollto.js" charset="utf-8"></script>--><!-- ScrollTo Plugin -->
+<script type="text/javascript" src="/landing/js/navigation.js" charset="utf-8"></script><!-- One-Page Navigation Plugin -->
+<script type="text/javascript" src="/landing/js/mousewheel.js" charset="utf-8"></script><!-- Mousewheel Plugin -->
+<script type="text/javascript" src="/landing/js/jquery.bxSlider.js" ></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#slider1').bxSlider();
+    $('#slider2').bxSlider();
+    $('#slider3').bxSlider();
+  });
+</script>
+
+<!-- Cufon font replacement script, see instructions in the help file
+<script type="text/javascript" src="js/cufon.js"></script>
+<script type="text/javascript" src="js/Calluna_400.font.js"></script>
+<script type="text/javascript">
+    Cufon.replace('h1, h2, h3, h4, h5, .box_title', {hover: true}); // Modify the classes according to your preferences
+</script>
+-->
+
+<!--[if IE 6]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" />
+<script src="js/ddbelatedpng.js"></script>
+<![endif]-->
+
+
+</head>	
+
+<body>
+<div>
+  <%= debug(params) if Rails.env.development?%>
+</div>
+<div>
+    <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%- end -%>
+</div>	
+<div id="header_wrapper"><!-- BEGIN HEADER -->
+  
+  <div id="header"><!-- BEGIN HEADER CONTAINER -->
+    
+    <ul id="menu">
+      <!-- BEGIN MENU -->
+      <div id="logo"><a href="#section1"></a></div>
+      <!-- LOGO CONTAINER -->
+      
+      <li><a href="#section2">kids</a></li>
+      <li><a href="#section3">parents</a></li>
+      <li><a href="#section4">publishers</a></li>
+    </ul>
+    <!-- END MENU --> 
+ 
+ 
+
+    <% if !user_signed_in? %>
+        <%= link_to("Sign In", new_user_session_path, :class => "login", :id => "signin") %>
+    <% end %>
+
+  </div>
+  <!-- END HEADER CONTAINER --> 
+  
+</div>
+<!-- END HEADER -->
+
+    <%= yield :layout %>
+	
+</div>
+</body>
+</html>
