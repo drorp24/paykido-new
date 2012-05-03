@@ -1,12 +1,19 @@
 class Transaction < ActiveRecord::Base
-  attr_accessible :account_id, :order_id
+  
+  belongs_to :order
+
+  attr_accessible :order_id
+
+  validates :order_id  , :presence => true
+  
+  default_scope :order => 'transactions.created_at DESC'
+
 end
 # == Schema Information
 #
 # Table name: transactions
 #
 #  id         :integer         not null, primary key
-#  account_id :integer
 #  order_id   :integer
 #  created_at :datetime        not null
 #  updated_at :datetime        not null

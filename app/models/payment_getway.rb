@@ -1,5 +1,10 @@
 class PaymentGetway < ActiveRecord::Base
+
+  belongs_to :account			
+  
   attr_accessible :account_id
+  validates :account_id, :presence => true
+
 end
 # == Schema Information
 #

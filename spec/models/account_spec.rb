@@ -8,6 +8,7 @@ end
 # Table name: accounts
 #
 #  id                    :integer         not null, primary key
+#  user_id               :integer
 #  created_at            :datetime        not null
 #  updated_at            :datetime        not null
 #  admin_id              :integer
@@ -18,6 +19,5 @@ end
 #  phone_events          :string(255)
 #  email_events          :string(255)
 #  active                :boolean
-#  registered            :boolean
 #
 
