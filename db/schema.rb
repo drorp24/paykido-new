@@ -11,7 +11,86 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421153516) do
+ActiveRecord::Schema.define(:version => 20120503045033) do
+
+  create_table "accounts", :force => true do |t|
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "admin_id"
+    t.boolean  "email_alert"
+    t.string   "email_alert_frequency"
+    t.boolean  "phone_alert"
+    t.string   "phone_alert_frequency"
+    t.string   "phone_events"
+    t.string   "email_events"
+    t.boolean  "active"
+    t.boolean  "registered"
+  end
+
+  create_table "consumers", :force => true do |t|
+    t.integer  "account_id",            :null => false
+    t.integer  "user_id",               :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "allowance_period"
+    t.datetime "allowance_change_date"
+    t.decimal  "balance_on_acd"
+    t.decimal  "purchases_since_acd"
+    t.decimal  "auto_authorize_under"
+    t.decimal  "auto_deny_over"
+    t.integer  "allowance_every"
+  end
+
+  create_table "merchants", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "name"
+    t.string   "email"
+    t.decimal  "collected"
+    t.decimal  "billed"
+    t.string   "logo"
+    t.string   "merchant_id"
+    t.string   "merchant_site_id"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "consumer_id"
+    t.integer  "merchant_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.decimal  "amount"
+    t.string   "title"
+    t.string   "description"
+    t.boolean  "authorized"
+    t.datetime "authorization_date"
+    t.string   "authorization_type"
+    t.string   "authorization_property"
+    t.string   "authorization_value"
+  end
+
+  create_table "payment_getways", :force => true do |t|
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rules", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "consumer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "action"
+    t.string   "property"
+    t.string   "value"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "order_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
@@ -37,6 +116,10 @@ ActiveRecord::Schema.define(:version => 20120421153516) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.integer  "account_id"
+    t.string   "phone"
+    t.string   "facebook"
+    t.string   "skype"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

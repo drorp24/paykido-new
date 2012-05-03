@@ -5,31 +5,32 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at
-  # attr_accessible :title, :body
+  attr_accessible :name, :email,:phone,:facebook,:skype,:account_id, :password, :password_confirmation, :remember_me, :confirmed_at
+  
+  belongs_to :account
+  # validates :account_id, :presence => true
 
 
-
-  	def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+  
+    data = access_token.extra.raw_info
 	  
-	    data = access_token.extra.raw_info
-  	  
-      if user = self.find_by_email(data.email)
-  	    user
-  	  else # Create a user with a stub password. 
-  	    self.create!(:email => data.email, :password => Devise.friendly_token[0,20]) 
-  	  end
-      
-  	end
+    if user = self.find_by_email(data.email)
+	    user
+	  else # Create a user with a stub password. 
+	    self.create!(:email => data.email, :password => Devise.friendly_token[0,20]) 
+	  end
+    
+	end
 
-  	def self.new_with_session(params, session)
-  		
-      super.tap do |user|
-      	if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-          user.email = data["email"]
-        end
+	def self.new_with_session(params, session)
+		
+    super.tap do |user|
+    	if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"]
       end
     end
+  end
 
 end
 # == Schema Information
@@ -60,5 +61,9 @@ end
 #  invitation_limit       :integer
 #  invited_by_id          :integer
 #  invited_by_type        :string(255)
+#  account_id             :integer
+#  phone                  :string(255)
+#  facebook               :string(255)
+#  skype                  :string(255)
 #
 

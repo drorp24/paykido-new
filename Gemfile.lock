@@ -60,6 +60,7 @@ GEM
     factory_girl_rails (3.2.0)
       factory_girl (~> 3.2.0)
       railties (>= 3.0.0)
+    faker (0.3.1)
     faraday (0.8.0)
       multipart-post (~> 1.1)
     hashie (1.2.0)
@@ -174,6 +175,7 @@ DEPENDENCIES
   devise_invitable (>= 1.0.1)
   email_spec (>= 1.2.1)
   factory_girl_rails (>= 3.1.0)
+  faker (= 0.3.1)
   jquery-rails
   omniauth-facebook
   rails (= 3.2.3)
