@@ -1,6 +1,7 @@
 class Merchant < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :name, :email, :merchant_id, :merchant_site_id
 end
+
 # == Schema Information
 #
 # Table name: merchants

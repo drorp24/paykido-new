@@ -11,9 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503045033) do
+ActiveRecord::Schema.define(:version => 20120503121630) do
 
   create_table "accounts", :force => true do |t|
+    t.integer  "user_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.integer  "admin_id"
@@ -24,12 +25,10 @@ ActiveRecord::Schema.define(:version => 20120503045033) do
     t.string   "phone_events"
     t.string   "email_events"
     t.boolean  "active"
-    t.boolean  "registered"
   end
 
-  create_table "consumers", :force => true do |t|
-    t.integer  "account_id",            :null => false
-    t.integer  "user_id",               :null => false
+  create_table "allowances", :force => true do |t|
+    t.integer  "user_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.string   "allowance_period"
@@ -54,8 +53,7 @@ ActiveRecord::Schema.define(:version => 20120503045033) do
   end
 
   create_table "orders", :force => true do |t|
-    t.integer  "account_id"
-    t.integer  "consumer_id"
+    t.integer  "user_id"
     t.integer  "merchant_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
@@ -76,17 +74,15 @@ ActiveRecord::Schema.define(:version => 20120503045033) do
   end
 
   create_table "rules", :force => true do |t|
-    t.integer  "account_id"
-    t.integer  "consumer_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "action"
     t.string   "property"
     t.string   "value"
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "account_id"
     t.integer  "order_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -116,7 +112,7 @@ ActiveRecord::Schema.define(:version => 20120503045033) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.integer  "account_id"
+    t.integer  "parent_id"
     t.string   "phone"
     t.string   "facebook"
     t.string   "skype"

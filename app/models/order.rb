@@ -1,13 +1,25 @@
 class Order < ActiveRecord::Base
-  attr_accessible :account_id, :consumer_id, :merchant_id
+  
+  belongs_to :user	
+  has_many :transactions, :dependent => :destroy
+
+  default_scope :order => 'orders.created_at DESC'
+
+  attr_accessible :user_id,
+  				  :merchant_id,
+  				  :amount, 
+  				  :title, 
+  				  :description
+
+  validates :user_id, :presence => true
+  
 end
 # == Schema Information
 #
 # Table name: orders
 #
 #  id                     :integer         not null, primary key
-#  account_id             :integer
-#  consumer_id            :integer
+#  user_id                :integer
 #  merchant_id            :integer
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null

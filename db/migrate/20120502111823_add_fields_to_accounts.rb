@@ -8,6 +8,5 @@ class AddFieldsToAccounts < ActiveRecord::Migration
     add_column :accounts, :phone_events, :string
     add_column :accounts, :email_events, :string
     add_column :accounts, :active, :boolean
-    add_column :accounts, :registered, :boolean
   end
 end

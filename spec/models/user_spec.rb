@@ -158,7 +158,7 @@ end# == Schema Information
 #  invitation_limit       :integer
 #  invited_by_id          :integer
 #  invited_by_type        :string(255)
-#  account_id             :integer
+#  parent_id              :integer
 #  phone                  :string(255)
 #  facebook               :string(255)
 #  skype                  :string(255)

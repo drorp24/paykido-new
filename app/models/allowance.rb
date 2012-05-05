@@ -1,9 +1,7 @@
-class Consumer < ActiveRecord::Base
-	belongs_to :account
+class Allowance < ActiveRecord::Base
+  
 	belongs_to :user
-	has_many :rules, :dependent => :destroy
-	
-  	 
+
   	attr_accessible :allowance_period,
   					:allowance_change_date,
 					:balance_on_acd,       
@@ -11,17 +9,16 @@ class Consumer < ActiveRecord::Base
 					:auto_authorize_under,
 					:auto_deny_over,        
 					:allowance_every,
-					:account_id,
 					:user_id 
-	validates :account_id, :presence => true				
+	
+	validates :user_id, :presence => true				
 end
 # == Schema Information
 #
-# Table name: consumers
+# Table name: allowances
 #
 #  id                    :integer         not null, primary key
-#  account_id            :integer         not null
-#  user_id               :integer         not null
+#  user_id               :integer
 #  created_at            :datetime        not null
 #  updated_at            :datetime        not null
 #  allowance_period      :string(255)

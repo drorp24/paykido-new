@@ -5,10 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email,:phone,:facebook,:skype,:account_id, :password, :password_confirmation, :remember_me, :confirmed_at
+  attr_accessible :name, :email,:phone,:facebook,:skype,:parent_id, :password, :password_confirmation, :remember_me, :confirmed_at
   
-  belongs_to :account
-  # validates :account_id, :presence => true
+  has_one :account, :dependent => :destroy
+  has_one :allowance, :dependent => :destroy
+  has_many :rules, :dependent => :destroy
+  has_many :orders, :dependent => :destroy
+  has_many :transactions, :through => :orders, :source => "transactions"
+  has_many :paymentgetways, :through => :account, :source => "PaymentGetway"
+  has_many :sones, :foreign_key => "parent_id", :class_name => "User"
 
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
@@ -33,6 +38,7 @@ class User < ActiveRecord::Base
   end
 
 end
+
 # == Schema Information
 #
 # Table name: users
@@ -61,7 +67,7 @@ end
 #  invitation_limit       :integer
 #  invited_by_id          :integer
 #  invited_by_type        :string(255)
-#  account_id             :integer
+#  parent_id              :integer
 #  phone                  :string(255)
 #  facebook               :string(255)
 #  skype                  :string(255)
