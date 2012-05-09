@@ -75,7 +75,7 @@ def make_users_as_sones(admin)
                        :password => "foobar",
                        :password_confirmation => "foobar",
                        :parent_id => admin.id ,
-                       :phone => Faker::PhoneNumber,
+                       :phone => Faker::PhoneNumber.phone_number,
                        :confirmed_at => Time.now.utc)
       p "User Created - #{user.name} : #{user.email}" 
       make_allowance(user)
@@ -92,7 +92,7 @@ def make_users
                          :email => "admin#{n+1}@paykido.org",
                          :password => "foobar",
                          :password_confirmation => "foobar",
-                         :phone=>Faker::PhoneNumber,
+                         :phone=>Faker::PhoneNumber.phone_number,
                          :confirmed_at => Time.now.utc)
       p "Admin User Created - #{admin.name} : #{admin.email}"
       

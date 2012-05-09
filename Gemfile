@@ -16,3 +16,7 @@ gem "will_paginate", ">= 3.0.3"
 gem "omniauth-facebook"
 gem 'ruby-debug19',:platform => :ruby_19 , :group => [:development, :test]
 gem 'faker','0.3.1', :group => [:development, :test]
+
+# gem 'hiredis', '0.4.3'
+gem 'redis', '2.2.2' #, :require => ["redis/connection/hiredis"]
+# gem "redis-objects", :git => "git://github.com/alexey/redis-objects.git", :require => 'redis/objects'
